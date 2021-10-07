@@ -1,5 +1,5 @@
 import unittest
-from movielens import Movielens
+from movielens_private_api import Movielens
 
 MOVIE_ID = 2021 # Dune (1984)
 

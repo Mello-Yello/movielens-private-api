@@ -1,16 +1,29 @@
-# movielens-api
-Python API for the movielens unpublished API, using the `requests` module
+# movielens-private-api
+Unofficial Python API for the Movielens unpublished API, using the `requests` module. Tested with Python 2.7 and 3.6, but should be compatible with more.
+
+### Installing movielens-private-api
+You can either clone the repository and install the package with pip:
+```shell
+$ git clone git://github.com/Mello-Yello/movielens-private-api.git
+$ cd movielens-private-api
+$ python -m pip install .
+```
+
+Or directly from PyPI:
+```shell
+$ python -m pip install movielens-private-api
+```
 
 ## Usage
 
-### Initialization
+### Setup
 
 Since operations are performed on a specific account, you need to either log in or provide the HTTP cookie containing a valid session.
 
 
 
 ```python
-from movielens import Movielens
+from movielens_private_api import Movielens
 m = Movielens()
 cookie = m.login(username, password)
 ```
@@ -18,7 +31,7 @@ cookie = m.login(username, password)
 The variable *cookie* from above can be saved to a file to be reused later during class initialization
 
 ```python
-from movielens import Movielens
+from movielens_private_api import Movielens
 m = Movielens(cookie)
 ```
 
@@ -27,7 +40,7 @@ m = Movielens(cookie)
 If the class wasn't initiated with a cookie, calling any method before `login()` will raise a `MovielensException`. This class encapsulates any API error received in the response, and is raised after an improper request. To access the original error message you have to catch the exception and use `str()` on it. 
 
 ```python
-from movielens import Movielens, MovielensException
+from movielens_private_api import Movielens, MovielensException
 m = Movielens()
 
 try:
@@ -117,7 +130,7 @@ Rate a movie on a scale from 0 to 5, with half values (like 3.5) accepted.
 Add a movie to the user whishlist
 
 ### hide(movieId)
-Hide a movie to the user. Equivalent to rating the movie -1
+Hide a movie from the user. Equivalent to rating the movie -1
 
 ### removeFromWishlist(movieId)
 Remove a movie from the user whishlist
